@@ -1,13 +1,19 @@
+@font-face {
+   font-family: 'roboto';
+    src: url('../font/roboto/Roboto-Light.ttf');
+}
+
+
 body {
     background-color: #ffffff;
-    font-size: 12px;
-    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-    color: #000000;  
+    font-size: 21px;
+    font-family: "roboto",Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #E5E5E5;
     margin: 10px;
 }
 
 h1 {
-    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    font-family: "roboto", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
     border-bottom: 1px solid #AFAFAF; 
     font-size:  16px;
     font-weight: bold;
@@ -20,10 +26,29 @@ a:link, a:visited {
   color: #045491;
   font-weight : bold;
   text-decoration: none;
+  font-family: "roboto", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif !important;
+
 }
 
 a:link:hover, a:visited:hover  {
   color: #045491;
   font-weight : bold;
   text-decoration : underline;
+      font-family: "roboto", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif !important;
+
+}
+      
+.soldeNegatifRow {
+    
+    background-color: #EA7261 !important;
+    background-image: none !important;
+    color: #FFFFFF !important;
+}
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------DATA TABLE CompteBancaireList------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.ui-datatable .ui-datatable-data {
+    font-family: "roboto", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif !important;
+    font-size: 18px;
 }

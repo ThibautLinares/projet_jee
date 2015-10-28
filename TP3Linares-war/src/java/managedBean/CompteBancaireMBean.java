@@ -44,9 +44,26 @@ public class CompteBancaireMBean implements Serializable {
     private LazyDataModel<CompteBancaire> modele;
     
     private String message;
+    
+    private CompteBancaire selectedCompte;
+
 
     public String getMessage() {
         return message;
+    }
+        public CompteBancaire getSelectedCompte() {
+        System.out.println("Dans getSelectedCompte");
+        return selectedCompte;
+    }
+ 
+    public void setSelectedCompte(CompteBancaire selectedCompte) {
+        System.out.println("Dans setSelectedCompte");
+        this.selectedCompte = selectedCompte;
+    }
+    public void supprimerUnCompte() {
+        System.out.println("Dans supprimerUnCompte");
+        this.gestionnaireDeCompteBancaire.supprimerCompte(this.selectedCompte.getId());
+        selectedCompte = null;
     }
 
     /**

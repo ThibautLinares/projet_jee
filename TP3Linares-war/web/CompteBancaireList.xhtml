@@ -48,11 +48,19 @@
             <p:separator />
             
         <f:view>
-            <h:form>
+            <h:form id="formCompteBancaire">
+                <p:contextMenu for="cTable">
+                    <p:menuitem value="Delete" update="cTable" icon="ui-icon-close" actionListener="#{compteBancaireMBean.supprimerUnCompte()}"/>
+                </p:contextMenu>
+                
                 <h1><h:outputText value="List"/></h1>
                 <p:dataTable id="cTable" value="#{compteBancaireMBean.modele}" var="item" paginator="true" rows="5" lazy="true"
                                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"  
                                              rowsPerPageTemplate="5,10,15"
+                                             resizableColumns="true" liveResize="true"
+                                             rowKey="#{item.id}"
+                                             rowStyleClass="#{item.solde le 0 ? 'soldeNegatifRow' : null}"
+                                             selection="#{compteBancaireMBean.selectedCompte}" selectionMode="single"
                                              emptyMessage="Aucun compte bancaire trouvé." >
                     <p:column sortBy="#{item.id}" filterBy="#{item.id}" filterMatchMode="contains">
                         <f:facet name="header">

@@ -10,3 +10,6 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/TP3Linares-war/build/
+/TP3Linares-ejb/dist/
+/TP3Linares-war/dist/
