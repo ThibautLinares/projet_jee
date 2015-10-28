@@ -1,0 +1,135 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package session;
+
+import entity.CompteBancaire;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.ejb.Stateless;
+import javax.ejb.LocalBean;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+/**
+ *
+ * @author user
+ */
+@Stateless
+@LocalBean
+public class GestionnaireDeCompteBancaire {
+    @PersistenceContext(unitName = "TP3Linares-ejbPU")
+    private EntityManager em;
+
+    public GestionnaireDeCompteBancaire() {
+        
+    }
+    
+    public void creerCompte(CompteBancaire c) {
+        em.persist(c);
+    }
+    
+    public void supprimerCompte(Long id) {
+        CompteBancaire c = em.find(CompteBancaire.class, id);
+        em.remove(em.merge(c));
+    }
+    
+    public List<CompteBancaire> getAllComptes() {
+        Query q = em.createQuery("select c from CompteBancaire c");
+        return q.getResultList();
+    }
+    
+    public List<CompteBancaire> getComptes(int start, int nbComptes){
+        
+        Query q = em.createQuery("select c from CompteBancaire c");
+        q.setFirstResult(start);
+        q.setMaxResults(nbComptes);
+        return q.getResultList();
+    }
+    
+    public int getNBComptes(){
+        Query query = em.createQuery("Select COUNT(c) FROM CompteBancaire c");
+        return ((Long) query.getSingleResult()).intValue();
+    }
+    
+    public String getRequeteFiltre(Map filters) {
+        
+        String id = "";
+        String nom = "";
+        String solde = "";
+        if (filters != null) {
+            Set set = filters.entrySet();
+            Iterator i = set.iterator();
+            if (i.hasNext()) {
+                 Map.Entry me = (Map.Entry) i.next();
+                 if(me.getKey().equals("id")) {
+                    id = " c.id = "+(String) me.getValue();
+                 }
+                 else if(me.getKey().equals("nom")) {
+                    nom = " c.nom like '%"+(String) me.getValue()+"%'";
+                 }
+                 else if(me.getKey().equals("solde")) {
+                    solde = " c.solde like '%"+(String) me.getValue()+"%'";
+                 }
+             }
+            System.out.println(" WHERE"+id+nom+solde);
+            return " WHERE"+id+nom+solde;
+        }
+        return "";
+    }
+    public List<CompteBancaire> getComptesTries(int start, int nb, String order, String tri, Map filters) {
+        
+        String orderValue = "";
+          if(order.equals("ASCENDING")) {
+              orderValue = "ASC";
+        } else {
+              orderValue = "DESC";
+          }
+        String r = "select c from CompteBancaire c"+getRequeteFiltre(filters)+" order by c."+tri+" " 
+                + orderValue;
+        System.out.println(r);
+        Query q = em.createQuery(r);
+        q.setFirstResult(start);
+        q.setMaxResults(nb);
+        return q.getResultList();
+    }
+    
+    public CompteBancaire getCompte(int id) {
+        
+        Query query = em.createQuery("SELECT c FROM CompteBancaire c WHERE c.id = :id").setParameter("id", id);
+        return (CompteBancaire) query.getSingleResult();
+    }
+    
+    public void creerComptesTest() {  
+       creerCompte(new CompteBancaire("John Lennon", 150000));  
+       creerCompte(new CompteBancaire("Paul McCartney", 950000));  
+       creerCompte(new CompteBancaire("Ringo Starr", 20000));  
+       creerCompte(new CompteBancaire("Georges Harrisson", 100000));  
+    }
+    
+    public void crediterUnCompte(Long id, double montant){
+        CompteBancaire c = em.find(CompteBancaire.class, id);
+        c.crediter(montant);
+    }   
+    
+    public void debiterUnCompte(Long id, double montant){
+        CompteBancaire c = em.find(CompteBancaire.class, id);
+        c.debiter(montant);
+    }
+    
+    public void transferer(Long id1, Long id2, double montant){
+        debiterUnCompte(id1,montant);
+        crediterUnCompte(id2,montant);
+    }
+    
+    public void persist(Object object) {
+        em.persist(object);
+    }
+    
+    
+}

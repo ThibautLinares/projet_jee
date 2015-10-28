@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template_default.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="metadata">
+    </ui:define>
+
+    <ui:define name="content">
+        <f:view>
+
+        <h:outputText rendered="#{!loginMBean.connected}" value="#{loginMBean.message}" /> 
+
+        <h:form id="loginForm" rendered="#{!loginMBean.connected}"> 
+         Username: <h:inputText id="loginForm" value="#{loginMBean.login}" /> 
+         Username: <h:inputText id="password" value="#{loginMBean.password}" /> 
+         
+         <h:commandButton value="Login" action="#{loginMBean.checkLogin}" /> 
+        </h:form> 
+        <h:form id="deconnexionForm" rendered="#{loginMBean.connected}"> 
+            <h:outputText value="#{loginMBean.message}" />
+         <h:commandButton value="Deconnexion" action="#{loginMBean.deconnexion}" /> 
+         </h:form>
+        
+        </f:view>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template_default.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="metadata">
+    </ui:define>
+
+    <ui:define name="content">
+            
+            <h:form>
+            <h:commandButton id="compte_test" value="Créer compte de test" action="#{compteBancaireMBean.creerCompteTest()}"/> 
+            </h:form>
+            
+            <h:form>
+            <h:outputLabel value="Id du compte à créditer" />
+            <h:inputText value="#{compteBancaireMBean.idCompteACrediter}"/>
+            <h:outputLabel value="Montant du compte à créditer" />
+            <h:inputText value="#{compteBancaireMBean.montantACrediter}"/>
+            <h:commandButton id="crediter" value="Créditer" action="#{compteBancaireMBean.crediterUnCompte()}"/> 
+            </h:form>
+            
+            <h:form>
+            <h:outputLabel value="Id du compte à débiter" />
+            <h:inputText value="#{compteBancaireMBean.idCompteADebiter}"/>
+            <h:outputLabel value="Montant du compte à débiter" />
+            <h:inputText value="#{compteBancaireMBean.montantADebiter}"/>
+            <h:commandButton id="debiter" value="Débiter" action="#{compteBancaireMBean.debiterUnCompte()}"/> 
+            </h:form>
+            
+            <h:form>
+            <h:outputLabel value="Id du compte à débiter" />
+            <h:inputText value="#{compteBancaireMBean.idCompteADebiter}"/>
+            <h:outputLabel value="Id du compte à créditer" />
+            <h:inputText value="#{compteBancaireMBean.idCompteACrediter}"/>
+            <h:outputLabel value="Montant du transfert" />
+            <h:inputText value="#{compteBancaireMBean.montantADebiter}"/>
+            <h:commandButton id="transferer" value="Transférer" action="#{compteBancaireMBean.transferer()}"/>
+            <h3>#{compteBancaireMBean.message}</h3>
+            </h:form>
+        
+            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+
+            <p:separator />
+            
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <p:dataTable id="cTable" value="#{compteBancaireMBean.modele}" var="item" paginator="true" rows="5" lazy="true"
+                                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"  
+                                             rowsPerPageTemplate="5,10,15"
+                                             emptyMessage="Aucun compte bancaire trouvé." >
+                    <p:column sortBy="#{item.id}" filterBy="#{item.id}" filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.nom}" filterBy="#{item.nom}" filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="Nom"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nom}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.solde}" filterBy="#{item.solde}" filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="Solde"/>
+                        </f:facet>
+                        <h:outputText value="#{item.solde}">
+                            <f:convertNumber currencySymbol="€" groupingUsed="#{true}" maxFractionDigits="2" type="currency"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Opérations"/>
+                        </f:facet>
+                        <h:link outcome="#{compteBancaireMBean.showDetails(item.id)}" value="Détails"/> 
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Suppression"/>
+                        </f:facet>
+                        <h:commandButton id="supprimer" value="Supprimer" action="#{compteBancaireMBean.supprimerUnCompte(item.id)}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+    </ui:define>
+
+</ui:composition>
