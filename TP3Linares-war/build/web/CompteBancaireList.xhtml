@@ -88,11 +88,10 @@
                         </f:facet>
                         <h:link outcome="#{compteBancaireMBean.showDetails(item.id)}" value="Détails"/> 
                     </p:column>
-                    <p:column>
+                    <p:column style="width: 27px;">
                         <f:facet name="header">
-                            <h:outputText value="Suppression"/>
                         </f:facet>
-                        <h:commandButton id="supprimer" value="Supprimer" action="#{compteBancaireMBean.supprimerUnCompte(item.id)}"/>
+                        <h:commandButton id="supprimer" value="X" action="#{compteBancaireMBean.supprimerUnCompte(item.id)}"/>
                     </p:column>
                 </p:dataTable>
             </h:form>
