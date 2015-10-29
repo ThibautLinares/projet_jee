@@ -16,6 +16,13 @@
     <h:body>
         <h:outputStylesheet library="css" name="default.css" />
         <h:outputStylesheet library="css" name="cssLayout.css" />
+        <header id="header" class="header_content">            
+            <ui:insert name="contentHeader">
+                
+            </ui:insert>
+        </header>
+        
+        
         <div id="left">
             <ul>  
                 <li><h:link outcome="index.xhtml" value="Accueil"/></li>    
@@ -39,7 +46,9 @@
             </div>                     
         </div>
         <div id="content" class="left_content">
-            <ui:insert name="content"></ui:insert>
+            <ui:insert name="content">
+                
+            </ui:insert>
         </div>
 
     </h:body>

@@ -5,9 +5,12 @@
                 template="./template_default.xhtml">
 
     <ui:define name="content">
-        <h:form>
-        <h:commandButton id="compte_test" value="Créer compte de test" action="#{compteBancaireMBean.creerCompteTest()}"/> 
-        </h:form>
+        <section>
+            <articel>Bienvenue  </articel>
+            <h:form>
+                <h:commandButton id="compte_test" value="Créer compte de test" action="#{compteBancaireMBean.creerCompteTest()}"/> 
+            </h:form>
+        </section>
     </ui:define>
 
 </ui:composition>

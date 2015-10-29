@@ -5,7 +5,9 @@
 
 
 body {
-    background-color: #ffffff;
+    background-image:url(../resources/background/background_blur.jpg);
+    background-repeat:no-repeat;
+    background-attachment:fixed;
     font-size: 21px;
     font-family: "roboto",Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
     color: #E5E5E5;
