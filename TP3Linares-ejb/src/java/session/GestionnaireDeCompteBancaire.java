@@ -57,11 +57,13 @@ public class GestionnaireDeCompteBancaire {
         return ((Long) query.getSingleResult()).intValue();
     }
     
-    public String getRequeteFiltre(Map filters) {
+    public List<CompteBancaire> getRequeteFiltre(int start, int nb, Map filters) {
         
         String id = "";
         String nom = "";
         String solde = "";
+        String filtre = "";
+        int countFilter = 0;
         if (filters != null) {
             Set set = filters.entrySet();
             Iterator i = set.iterator();
@@ -69,20 +71,34 @@ public class GestionnaireDeCompteBancaire {
                  Map.Entry me = (Map.Entry) i.next();
                  if(me.getKey().equals("id")) {
                     id = " c.id = "+(String) me.getValue();
+                    countFilter++;
                  }
                  else if(me.getKey().equals("nom")) {
-                    nom = " c.nom like '%"+(String) me.getValue()+"%'";
+                    if(countFilter > 0) {
+                        nom = "AND";
+                    }
+                    nom += " c.nom like '%"+(String) me.getValue()+"%'";
+                    countFilter++;
                  }
                  else if(me.getKey().equals("solde")) {
-                    solde = " c.solde like '%"+(String) me.getValue()+"%'";
+                    if(countFilter > 0) {
+                        nom = "AND";
+                    }
+                    solde += " c.solde = "+(String) me.getValue();
+                    countFilter++;
                  }
              }
-            System.out.println(" WHERE"+id+nom+solde);
-            return " WHERE"+id+nom+solde;
+            if(countFilter > 0) {
+                filtre = " WHERE"+id+nom+solde;
+            }
         }
-        return "";
+        String r = "select c from CompteBancaire c"+filtre;
+        Query q = em.createQuery(r);
+        q.setFirstResult(start);
+        q.setMaxResults(nb);
+        return q.getResultList();
     }
-    public List<CompteBancaire> getComptesTries(int start, int nb, String order, String tri, Map filters) {
+    public List<CompteBancaire> getComptesTries(int start, int nb, String order, String tri) {
         
         String orderValue = "";
           if(order.equals("ASCENDING")) {
@@ -90,7 +106,7 @@ public class GestionnaireDeCompteBancaire {
         } else {
               orderValue = "DESC";
           }
-        String r = "select c from CompteBancaire c"+getRequeteFiltre(filters)+" order by c."+tri+" " 
+        String r = "select c from CompteBancaire c order by c."+tri+" " 
                 + orderValue;
         System.out.println(r);
         Query q = em.createQuery(r);

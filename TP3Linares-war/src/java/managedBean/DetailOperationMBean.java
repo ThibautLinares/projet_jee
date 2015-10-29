@@ -43,7 +43,6 @@ public class DetailOperationMBean implements Serializable {
     }
     
     public void loadCompte() {
-        System.out.println("LOAD");
         this.cb = gestionnaireDeCompteBancaire.getCompte(idCompteBancaire);
     }
 

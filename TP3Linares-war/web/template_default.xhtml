@@ -34,8 +34,8 @@
                 <h:outputText rendered="#{!loginMBean.connected}" value="#{loginMBean.message}" /> 
 
                 <h:form id="loginForm" rendered="#{!loginMBean.connected}"> 
-                 Username: <h:inputText id="loginForm" value="#{loginMBean.login}" /> 
-                 Username: <h:inputText id="password" value="#{loginMBean.password}" /> 
+                 Login: <h:inputText id="loginForm" value="#{loginMBean.login}" /> 
+                 Password: <h:inputText id="password" value="#{loginMBean.password}" /> 
 
                  <h:commandButton value="Login" action="#{loginMBean.checkLogin}" /> 
                 </h:form> 
@@ -46,9 +46,14 @@
             </div>                     
         </div>
         <div id="content" class="left_content">
-            <ui:insert name="content">
-                
-            </ui:insert>
+            <!-- div en JSF -->
+            <h:panelGroup layout="block" rendered="#{loginMBean.connected}">
+ 
+                <ui:insert name="content">
+
+                </ui:insert>
+            </h:panelGroup>
+            <h:outputText rendered="#{!loginMBean.connected}" value="Veuillez vous connecter pour accèder à l'application" /> 
         </div>
 
     </h:body>

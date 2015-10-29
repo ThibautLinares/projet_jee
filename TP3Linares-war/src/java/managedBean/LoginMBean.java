@@ -37,12 +37,10 @@ public class LoginMBean implements Serializable {
     }
 
     public String getLogin() {
-        System.out.println("la");
         return login;
     }
 
     public void setLogin(String login) {
-        System.out.println("ici");
         this.login = login;
     }
 

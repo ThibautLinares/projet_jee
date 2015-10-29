@@ -51,17 +51,15 @@ public class CompteBancaireMBean implements Serializable {
     public String getMessage() {
         return message;
     }
-        public CompteBancaire getSelectedCompte() {
-        System.out.println("Dans getSelectedCompte");
+    
+    public CompteBancaire getSelectedCompte() {
         return selectedCompte;
     }
  
     public void setSelectedCompte(CompteBancaire selectedCompte) {
-        System.out.println("Dans setSelectedCompte");
         this.selectedCompte = selectedCompte;
     }
     public void supprimerUnCompte() {
-        System.out.println("Dans supprimerUnCompte");
         this.gestionnaireDeCompteBancaire.supprimerCompte(this.selectedCompte.getId());
         selectedCompte = null;
     }
@@ -149,37 +147,27 @@ public class CompteBancaireMBean implements Serializable {
                             String nomChamp, SortOrder so, 
                             Map filters) {
  
-                        if (filters != null) {
-                            String filterValue = "";
-                            String filterKey = "";
-                            Set set = filters.entrySet();
-                            Iterator i = set.iterator();
-                            if (i.hasNext()) {
-                                 Map.Entry me = (Map.Entry) i.next();
-                                 filterKey = (String) me.getKey();
-                                 filterValue = (String) me.getValue();
-                             }
-                            System.out.println(filterKey);
-                            System.out.println(filterValue);
+                        if (!filters.isEmpty()) {
+                            return gestionnaireDeCompteBancaire.getRequeteFiltre(start, nb, filters);
                         }
                         if(nomChamp != null) {
                             if(nomChamp.equals("nom")) {
                                 // Il faut trier
                                 System.out.println("Tri: champ= " + 
                                         nomChamp + " ordre: " +so.name());
-                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"nom",filters);
+                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"nom");
                             }
                             else if(nomChamp.equals("id")){
                                 // Il faut trier
                                 System.out.println("Tri: champ= " + 
                                         nomChamp + " ordre: " +so.name());
-                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"id",filters);
+                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"id");
                             }
                             else if(nomChamp.equals("solde")){
                                 // Il faut trier
                                 System.out.println("Tri: champ= " + 
                                         nomChamp + " ordre: " +so.name());
-                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"solde",filters);
+                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"solde");
                             }
                         } else {
                             // Juste la pagination, pas de tri, de filtre

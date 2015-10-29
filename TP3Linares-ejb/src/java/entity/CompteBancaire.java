@@ -49,15 +49,11 @@ public class CompteBancaire implements Serializable {
         operations.add(op);
     }  
 
-    public double debiter(double montant) {  
-        if (montant < solde) {  
+    public double debiter(double montant) {
             solde -= montant;  
             OperationBancaire op = new OperationBancaire("Débit", (int)montant);
             operations.add(op);
-            return montant;  
-        } else {  
-            throw new EJBException();
-        }  
+            return montant;
     }  
     
     public Long getId() {
