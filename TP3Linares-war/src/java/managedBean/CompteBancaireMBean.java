@@ -6,12 +6,12 @@
 package managedBean;
 
 import entity.CompteBancaire;
+import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -27,7 +27,7 @@ import session.GestionnaireDeCompteBancaire;
  */
 @Named(value = "compteBancaireMBean")
 @ViewScoped
-public class CompteBancaireMBean implements Serializable {
+public class CompteBancaireMBean implements Serializable  {
     @EJB
     private GestionnaireDeCompteBancaire gestionnaireDeCompteBancaire;
     
@@ -62,6 +62,10 @@ public class CompteBancaireMBean implements Serializable {
     public void supprimerUnCompte() {
         this.gestionnaireDeCompteBancaire.supprimerCompte(this.selectedCompte.getId());
         selectedCompte = null;
+    }
+    
+    public void supprimerUnCompte(Long idCompteASupprimer) {
+        gestionnaireDeCompteBancaire.supprimerCompte(idCompteASupprimer);
     }
 
     /**
@@ -219,9 +223,7 @@ public class CompteBancaireMBean implements Serializable {
         }
     }
     
-    public void supprimerUnCompte(Long idCompteASupprimer) {
-        gestionnaireDeCompteBancaire.supprimerCompte(idCompteASupprimer);
-    }
+    
     
     public String showDetails(int idCompteBancaire) {
         return "DetailOperation?idCompteBancaire="+idCompteBancaire;

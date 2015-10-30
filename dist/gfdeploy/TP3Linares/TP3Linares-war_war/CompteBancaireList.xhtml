@@ -47,11 +47,18 @@
 
                 <p:separator />
 
+                
+                
+                
             <f:view>
                 <h:form id="formCompteBancaire">
                     <p:contextMenu for="cTable">
-                        <p:menuitem value="Delete" update="cTable" icon="ui-icon-close" actionListener="#{compteBancaireMBean.supprimerUnCompte()}"/>
+                        <p:menuitem value="Supprimer" update="cTable" icon="ui-icon-close" actionListener="#{compteBancaireMBean.supprimerUnCompte()}"/>
                     </p:contextMenu>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
 
                     <h1><h:outputText value="List"/></h1>
                     <p:dataTable id="cTable" value="#{compteBancaireMBean.modele}" var="item" paginator="true" rows="5" lazy="true"
@@ -62,19 +69,24 @@
                                                  rowStyleClass="#{item.solde le 0 ? 'soldeNegatifRow' : null}"
                                                  selection="#{compteBancaireMBean.selectedCompte}" selectionMode="single"
                                                  emptyMessage="Aucun compte bancaire trouvé." >
-                        <p:column sortBy="#{item.id}" filterBy="#{item.id}" filterMatchMode="contains">
+                        <!-- <f:facet name="header">
+                            Liste des comptes bancaires
+                            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+                            <p:columnToggler datasource="cTable" trigger="toggler" />
+                        </f:facet>-->
+                        <p:column style="width:50px;" sortBy="#{item.id}" filterBy="#{item.id}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="Id"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
                         </p:column>
-                        <p:column sortBy="#{item.nom}" filterBy="#{item.nom}" filterMatchMode="contains">
+                        <p:column style="width:100px;" sortBy="#{item.nom}" filterBy="#{item.nom}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="Nom"/>
                             </f:facet>
                             <h:outputText value="#{item.nom}"/>
                         </p:column>
-                        <p:column sortBy="#{item.solde}" filterBy="#{item.solde}" filterMatchMode="contains">
+                        <p:column style="width:150px;" sortBy="#{item.solde}" filterBy="#{item.solde}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="Solde"/>
                             </f:facet>
@@ -82,19 +94,21 @@
                                 <f:convertNumber currencySymbol="€" groupingUsed="#{true}" maxFractionDigits="2" type="currency"/>
                             </h:outputText>
                         </p:column>
-                        <p:column>
+                        <p:column style="width:50px;">
                             <f:facet name="header">
                                 <h:outputText value="Opérations"/>
                             </f:facet>
                             <h:link outcome="#{compteBancaireMBean.showDetails(item.id)}" value="Détails"/> 
                         </p:column>
-                        <p:column>
+                        <p:column style="width:20px;">
                             <f:facet name="header">
-                                <h:outputText value="Suppression"/>
                             </f:facet>
-                            <h:commandButton id="supprimer" value="Supprimer" action="#{compteBancaireMBean.supprimerUnCompte(item.id)}"/>
+                            <p:commandButton value="X" update="cTable" actionListener="#{compteBancaireMBean.supprimerUnCompte(item.id)}">
+                                <p:confirm header="Confirmation" message="Êtes-vous sûr?" icon="ui-icon-alert" />
+                            </p:commandButton>
                         </p:column>
                     </p:dataTable>
+                    
                 </h:form>
             </f:view>
             <p:separator />

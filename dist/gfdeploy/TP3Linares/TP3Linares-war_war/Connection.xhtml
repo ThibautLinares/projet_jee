@@ -14,16 +14,18 @@
 
         <h:outputText rendered="#{!loginMBean.connected}" value="#{loginMBean.message}" /> 
 
-        <h:form id="loginForm" rendered="#{!loginMBean.connected}"> 
-         Username: <h:inputText id="loginForm" value="#{loginMBean.login}" /> 
-         Username: <h:inputText id="password" value="#{loginMBean.password}" /> 
-         
-         <h:commandButton value="Login" action="#{loginMBean.checkLogin}" /> 
-        </h:form> 
-        <h:form id="deconnexionForm" rendered="#{loginMBean.connected}"> 
-            <h:outputText value="#{loginMBean.message}" />
-         <h:commandButton value="Deconnexion" action="#{loginMBean.deconnexion}" /> 
-         </h:form>
+            <h:form id="loginForm" rendered="#{!loginMBean.connected}"> 
+             Username: <h:inputText id="loginForm" value="#{loginMBean.login}" /> 
+             Username: <h:inputText id="password" value="#{loginMBean.password}" /> 
+
+             <h:commandButton value="Login" action="#{loginMBean.checkLogin}" /> 
+            </h:form> 
+        
+        
+            <h:form id="deconnexionForm" rendered="#{loginMBean.connected}"> 
+                <h:outputText value="#{loginMBean.message}" />
+             <h:commandButton value="Deconnexion" action="#{loginMBean.deconnexion}" /> 
+             </h:form>
         
         </f:view>
 

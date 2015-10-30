@@ -26,7 +26,7 @@ public class LoginMBean implements Serializable {
     private String login;
     private String password;
     private boolean connected = false;
-    private String message = "Veuillez vous identifier :";
+    private String message = "Veuillez vous identifier";
 
     public String getMessage() {
         return message;
