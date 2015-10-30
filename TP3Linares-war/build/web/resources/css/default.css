@@ -49,13 +49,51 @@ a:link:hover, a:visited:hover  {
 }
       
 .soldeNegatifRow {
-    
     background-color: #EA7261 !important;
     background-image: none !important;
     color: #FFFFFF !important;
 }
-
-
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------INDEX------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.btnCreerCompteTest{
+        border-style: none none solid none;
+        border-bottom: 1px solid #C9C9C9;
+        border-radius:5px;
+        font-size: 1em;
+        font-family: "roboto";
+        background-color: rgba(255,255,255,0.8);   
+        color: #64794E;
+        cursor: pointer;
+        width: 160px;
+        height: 50px;
+        margin-top: 1%;
+        font-size: 15px;
+        margin-top: 10px;
+}
+.btnCreerCompteTest:hover{
+        width:180px;
+        background-color: rgba(255,255,255,0.2);   
+        color:#F0F0F0;
+        border-style: none none none none;
+        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.2), 0 10px 15px 0 rgba(0, 0, 0, 0.15);
+}
+.initialiseAppForm{
+        opacity: 1;
+        position: relative;
+        margin-top: 30%;
+        padding: 5%;
+        width: 20%;
+        background-color: rgba(250,250,250,0.1);
+        box-shadow: 2px 3px 10px rgba(88, 88, 88, 0.78);
+        min-width: 500px;
+        text-align: center;
+        border-radius: 8px;
+}
+.initialiseAppSection{
+    margin: auto;
+    width:600px;
+}
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------DATA TABLE CompteBancaireList------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -66,6 +104,68 @@ a:link:hover, a:visited:hover  {
 }
 #formCompteBancaire{
         width: 90% !important;
+}
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------Virement bancaire------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.inputVirement{
+        font-size: 17px;   
+    width: 90%;   
+    background-color: rgba(255,255,255,0.8);   
+    color: #A9A9A9;   
+    font-family:"roboto"; 
+    padding-left: 1%;
+    margin-top: 10px;  
+    border-style: none none solid none; 
+    border-bottom: 1px solid #C9C9C9;
+    border-radius: 5px;
+    height:50px;
+    background-position: 10px center;
+}
+.btnCrediter,.btnDebiter,.btnTransferer{
+        border-style: none none solid none;
+        border-bottom: 1px solid #C9C9C9;
+        border-radius:5px;
+        font-size: 1em;
+        font-family: "roboto";
+        background-color: rgba(255,255,255,0.8);   
+        color: #64794E;
+        cursor: pointer;
+        width: 95px;
+        height: 50px;
+        margin-top: 1%;
+        font-size: 15px;
+        margin-top: 10px;
+}
+.btnCrediter:hover,.btnDebiter:hover,.btnTransferer:hover{
+        width:110px;
+        background-color: rgba(255,255,255,0.2);   
+        color:#F0F0F0;
+        border-style: none none none none;
+        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.2), 0 10px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+
+.virementSection{
+        margin: auto;
+        width:900px;
+}
+.virementSection .ui-widget-content{
+            background: none !important;
+
+}
+.tabViewVirement{
+        opacity: 1;
+        position: relative;
+        margin-top: 30%;
+        padding: 5%;
+        width: 100%;
+        background-color: rgba(250,250,250,0.1);
+        box-shadow: 2px 3px 10px rgba(88, 88, 88, 0.78);
+        min-width: 500px;
+        text-align: center;
+        border-radius: 8px;
+    
 }
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -79,12 +179,12 @@ a:link:hover, a:visited:hover  {
 .loginForm{
         opacity: 1;
         position: relative;
-    margin-top: 30%;
-    padding: 5%;
+        margin-top: 10%;
+        padding: 5%;
         width: 20%;
         background-color: rgba(250,250,250,0.1);
-    box-shadow: 2px 3px 10px rgba(88, 88, 88, 0.78);
-    min-width: 500px;
+        box-shadow: 2px 3px 10px rgba(88, 88, 88, 0.78);
+        min-width: 500px;
         text-align: center;
         border-radius: 8px;
 }
@@ -103,13 +203,7 @@ a:link:hover, a:visited:hover  {
     height:50px;
     background-position: 10px center;
 }
-.login:focus,.password:focus,.btnConnexion:focus,.deconnexion:focus{
-        outline: none;
-}
-.login:hover,.password:hover,.btnConnexion:hover,.deconnexion:hover{
-        background-color: rgba(255,255,255,0.4);   
-        color: #ffffff;
-}
+
 .btnConnexion{
         border-style: none none solid none;
         border-bottom: 1px solid #C9C9C9;
@@ -156,10 +250,39 @@ a:link:hover, a:visited:hover  {
         box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.2), 0 10px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------BUTTON-----------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+
 .btnConnexion:focus,.deconnexion:focus{
         outline: none;
 }
-.login,.password,.btnConnexion,.deconnexion{
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------INPUT-----------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+input:hover::-webkit-input-placeholder{color: #FFFFFF;}
+/* Firefox < 19 */
+input:hover:-moz-placeholder{color: #FFFFFF;}
+/* Firefox > 19 */
+input:hover::-moz-placeholder{color: #FFFFFF;}
+/* Internet Explorer 10 */
+input:hover:-ms-input-placeholder{color: #FFFFFF;}
+
+.login:focus,.password:focus,.btnConnexion:focus,.deconnexion:focus{
+        outline: none;
+}
+.login:hover,.password:hover,.btnConnexion:hover,.deconnexion:hover{
+        background-color: rgba(255,255,255,0.4);   
+        color: #ffffff;
+}
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------TRANSITION---------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.login,.password,.btnConnexion,.deconnexion,.btnCrediter,.btnDebiter,.btnTransferer,.btnCreerCompteTest{
         -o-transition: all 0.5s linear;
         -moz-transition: all 0.5s linear;
         -khtml-transition: all 0.5s linear;
@@ -168,11 +291,5 @@ a:link:hover, a:visited:hover  {
         transition: all 0.5s linear;
 
 }
-input:hover::-webkit-input-placeholder{color: #FFFFFF;}
-/* Firefox < 19 */
-input:hover:-moz-placeholder{color: #FFFFFF;}
-/* Firefox > 19 */
-input:hover::-moz-placeholder{color: #FFFFFF;}
-/* Internet Explorer 10 */
-input:hover:-ms-input-placeholder{color: #FFFFFF;}
+
 

@@ -206,14 +206,17 @@ public class CompteBancaireMBean implements Serializable  {
     public void crediterUnCompte() {
         gestionnaireDeCompteBancaire.crediterUnCompte(idCompteACrediter, montantACrediter);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Compte "+idCompteACrediter+" crédité de "+montantACrediter+"€"));
+        redirect();
     }
     
     public void debiterUnCompte() {
         gestionnaireDeCompteBancaire.debiterUnCompte(idCompteADebiter, montantADebiter);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Compte "+idCompteADebiter+" débité de "+montantADebiter+"€"));
+        redirect();
     }
     
     public void transferer() {
+        redirect();
         try {
             gestionnaireDeCompteBancaire.transferer(idCompteADebiter, idCompteACrediter, montantADebiter);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", montantADebiter+"€ transféré du compte "
@@ -227,6 +230,15 @@ public class CompteBancaireMBean implements Serializable  {
     
     public String showDetails(int idCompteBancaire) {
         return "DetailOperation?idCompteBancaire="+idCompteBancaire;
+    }
+    
+    
+    private void redirect(){
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("VirementBancaire.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(CompteBancaireMBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
