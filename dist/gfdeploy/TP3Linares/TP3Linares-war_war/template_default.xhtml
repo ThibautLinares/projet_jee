@@ -4,7 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-
+    
     <ui:insert name="metadata"/>
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -14,58 +14,32 @@
     </h:head>
 
     <h:body>
-        <h:outputStylesheet library="css" name="default.css" />
-        <h:outputStylesheet library="css" name="cssLayout.css" />
 
-
-        <h:panelGroup layout="block" rendered="#{loginMBean.connected}">
-            <header id="header" class="header_content" >            
-                <ui:insert name="contentHeader">
-                    <h:form id="deconnexionForm" rendered="#{loginMBean.connected}"> 
-                        <h:outputText value="#{loginMBean.message}" />
-                        <h:commandButton styleClass="deconnexion" value="Deconnexion" action="#{loginMBean.deconnexion}" /> 
-                    </h:form>                
-                </ui:insert>
-            </header>
-        </h:panelGroup>
-
-
-        <!--Connexion-->
-        <div id="leftcolumn_box01">
-            <h:form styleClass="loginForm" id="loginForm" rendered="#{!loginMBean.connected}"> 
+        <div id="left">
+            <ul>  
+                <li><h:link outcome="index.xhtml" value="Accueil"/></li>    
+                <li><h:link outcome="CompteBancaireList.xhtml" value="Liste compte"/></li>    
+            </ul> 
+            
+            <div id="leftcolumn_box01">
+                   
                 <h:outputText rendered="#{!loginMBean.connected}" value="#{loginMBean.message}" /> 
-                <h:inputText styleClass="login" id="login" value="#{loginMBean.login}" /> 
-                <p:watermark for="login" value="Login" id="watermarkLogin" /><!--Placeholder-->
-                <h:inputText styleClass="password" id="password" value="#{loginMBean.password}" /> 
-                <p:watermark for="password" value="Password" id="watermarkPassword" /><!--Placeholder-->
-                <h:commandButton styleClass="btnConnexion" id="btnConnexion" value="Connexion" action="#{loginMBean.checkLogin}" /> 
-            </h:form> 
-        </div> 
 
+                <h:form id="loginForm" rendered="#{!loginMBean.connected}"> 
+                 Username: <h:inputText id="loginForm" value="#{loginMBean.login}" /> 
+                 Username: <h:inputText id="password" value="#{loginMBean.password}" /> 
 
-        <h:panelGroup layout="block" rendered="#{loginMBean.connected}">
-            <div id="left">
-                <ul>  
-                    <li><h:link outcome="index.xhtml" value="Accueil"/></li>    
-                    <li><h:link outcome="CompteBancaireList.xhtml" value="Liste des comptes"/></li> 
-                    <li><h:link outcome="VirementBancaire.xhtml" value="Virement"/></li> 
-                </ul> 
-            </div>
-        </h:panelGroup>                   
-
-
-
-        <!-- div en JSF -->
-        <h:panelGroup layout="block" rendered="#{loginMBean.connected}">
-            <div id="content" class="left_content">
-                <ui:insert name="content">
-
-                </ui:insert>
-            </div>
-        </h:panelGroup>
-
-
-
+                 <h:commandButton value="Login" action="#{loginMBean.checkLogin}" /> 
+                </h:form> 
+                <h:form id="deconnexionForm" rendered="#{loginMBean.connected}"> 
+                    <h:outputText value="#{loginMBean.message}" />
+                 <h:commandButton value="Deconnexion" action="#{loginMBean.deconnexion}" /> 
+                 </h:form>
+            </div>                     
+        </div>
+        <div id="content" class="left_content">
+            <ui:insert name="content"></ui:insert>
+        </div>
 
     </h:body>
 

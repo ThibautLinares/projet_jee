@@ -8,6 +8,7 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.ejb.EJBException;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +16,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 
 /**
  *
@@ -26,15 +26,13 @@ public class CompteBancaire implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long id;
+    private Long id;
 
-    protected String nom;
-    protected double solde;
+    private String nom;
+    private double solde;
     @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
-    //@OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
-    @OrderBy("dateOperation ASC")
-    protected Collection<OperationBancaire> operations = new ArrayList<>();  
-    protected String description;
+    private Collection<OperationBancaire> operations = new ArrayList<>();  
+
     public CompteBancaire() {
     }
     
@@ -51,11 +49,15 @@ public class CompteBancaire implements Serializable {
         operations.add(op);
     }  
 
-    public double debiter(double montant) {
+    public double debiter(double montant) {  
+        if (montant < solde) {  
             solde -= montant;  
             OperationBancaire op = new OperationBancaire("Débit", (int)montant);
             operations.add(op);
-            return montant;
+            return montant;  
+        } else {  
+            throw new EJBException();
+        }  
     }  
     
     public Long getId() {

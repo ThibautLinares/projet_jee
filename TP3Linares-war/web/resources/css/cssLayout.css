@@ -1,39 +1,24 @@
 
+#top {
+    position: relative;
+    background-color: #036fab;
+    color: white;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+}
+
+#bottom {
+    position: relative;
+    background-color: #c2dfef;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+}
 
 #left {
     float: left;
-    background-color: rgb(255, 255, 255);
-    padding-left: 5px;
-    width: 250px;
-    height: 100%;
-    padding-top: 40px;
-    position: fixed;
-    z-index: 5;
-    box-shadow: 2px 0px 4px 0px rgba(0,0,0,0.3);
-}
-#left>ul>li>a{
-    text-align: left;
-    cursor: pointer;
-    font-size: 1.3em;
-}
-#left>ul{
-    padding: 0px;
-}
-a:link,a:visited{
-  color: #636363 !important;
-    font-weight: normal !important;
-    text-decoration: none;
-    font-family: "roboto"!important;
-}
-#left>ul>li{
-    list-style: none;
-    cursor: pointer;
-    min-width: 150px;
-    height: auto;
-    padding: 15px 0 15px 10%;
-    color: #636363;
-    border-bottom: 1px solid #D0D0D0;
-
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
 }
 
 #right {
@@ -50,11 +35,9 @@ a:link,a:visited{
 }
 
 .left_content {
-    background-color: rgba(255, 255, 255, 0.40);
-    height: 100%;
-    padding-top: 100px;
-    padding-left: 265px;
-    padding-right: 15px;
+    background-color: #dddddd;
+    padding: 5px;
+    margin-left: 170px;
 }
 
 .right_content {
@@ -64,7 +47,8 @@ a:link,a:visited{
 }
 
 #top a:link, #top a:visited {
-  color: #636363;
+  color: white;
+  font-weight : bold;
   text-decoration: none;
 }
 
@@ -72,9 +56,6 @@ a:link,a:visited{
   color: black;
   font-weight : bold;
   text-decoration : underline;
-}
-.left_content label{
-    color: rgb(255, 255, 255);
 }
 
 
