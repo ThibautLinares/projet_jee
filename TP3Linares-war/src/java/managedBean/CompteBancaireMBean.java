@@ -8,6 +8,7 @@ package managedBean;
 import entity.CompteBancaire;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -47,7 +48,10 @@ public class CompteBancaireMBean implements Serializable  {
     
     private CompteBancaire selectedCompte;
 
+    private String nomCompteACrediter;
 
+    private String nomCompteADebiter;
+    
     public String getMessage() {
         return message;
     }
@@ -121,7 +125,19 @@ public class CompteBancaireMBean implements Serializable  {
     public void setIdCompteACrediter(Long idCompteACrediter) {
         this.idCompteACrediter = idCompteACrediter;
     }
-
+    public String getNomCompteACrediter(){
+        return nomCompteACrediter;
+    }
+    public void setNomCompteACrediter(String nomCompteACrediter){
+        this.nomCompteACrediter = nomCompteACrediter;
+    }
+    public String getNomCompteADebiter(){
+        return nomCompteADebiter;
+    }
+    public void setNomCompteADebiter(String nomCompteADebiter){
+        this.nomCompteADebiter = nomCompteADebiter;
+    }
+    
     /**
      * Get the value of idCompteADebiter
      *
@@ -204,29 +220,42 @@ public class CompteBancaireMBean implements Serializable  {
     }
     
     public void crediterUnCompte() {
+        
+        Long id = gestionnaireDeCompteBancaire.getIdCompteByName(this.nomCompteACrediter);
+        this.setIdCompteACrediter(id);
         gestionnaireDeCompteBancaire.crediterUnCompte(idCompteACrediter, montantACrediter);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Compte "+idCompteACrediter+" crédité de "+montantACrediter+"€"));
         redirect();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Compte "+idCompteACrediter+" crédité de "+montantACrediter+"€"));
+
     }
     
     public void debiterUnCompte() {
+        Long id = gestionnaireDeCompteBancaire.getIdCompteByName(this.nomCompteADebiter);
+        this.setIdCompteADebiter(id);
         gestionnaireDeCompteBancaire.debiterUnCompte(idCompteADebiter, montantADebiter);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Compte "+idCompteADebiter+" débité de "+montantADebiter+"€"));
         redirect();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Compte "+idCompteADebiter+" débité de "+montantADebiter+"€"));
     }
     
     public void transferer() {
-        redirect();
-        try {
+            Long idCompteCrediter = gestionnaireDeCompteBancaire.getIdCompteByName(this.nomCompteACrediter);
+            System.out.println("nomCompteACrediter =" +nomCompteACrediter+" idCompteCrediter = "+idCompteCrediter);
+            this.setIdCompteACrediter(idCompteCrediter);
+            Long idCompteDebiter = gestionnaireDeCompteBancaire.getIdCompteByName(this.nomCompteADebiter);
+            System.out.println("nomCompteADebiter =" +nomCompteADebiter+" idCompteDebiter = "+idCompteDebiter);
+            this.setIdCompteADebiter(idCompteDebiter);
             gestionnaireDeCompteBancaire.transferer(idCompteADebiter, idCompteACrediter, montantADebiter);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", montantADebiter+"€ transféré du compte "
-                    +idCompteADebiter+" au compte "+idCompteACrediter));
-        } catch(Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Transfert impossible, pas assez d'argent"));
-        }
+            redirect();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", montantADebiter+"€ transféré du compte "+idCompteADebiter+" au compte "+idCompteACrediter));
+ 
     }
     
-    
+    public List<String> completeText(String query) {
+        List<String> results = new ArrayList<String>();
+        System.out.println("completeText query = "+query);
+        results = this.gestionnaireDeCompteBancaire.getComptesAutoComplete(query, 10);
+        return results;
+    }
     
     public String showDetails(int idCompteBancaire) {
         return "DetailOperation?idCompteBancaire="+idCompteBancaire;

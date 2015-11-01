@@ -7,7 +7,9 @@
     <ui:define name="content">
         <section class="initialiseAppSection">
             <h:form styleClass="initialiseAppForm">
-                <h:commandButton id="compte_test" styleClass="btnCreerCompteTest"  value="Créer compte de test" action="#{compteBancaireMBean.creerCompteTest()}"/> 
+                <h:commandButton id="compte_test" styleClass="btnCreerCompteTest"  value="Créer des comptes de test" action="#{compteBancaireMBean.creerCompteTest()}"/> 
+                <h:outputText value="&lt;br/&gt;" escape="false" />
+                <h:commandButton id="operation_test" styleClass="btnCreerOperationTest"  value="Créer des opérations de test" action="#{compteBancaireMBean.creerOperationTest()}"/> 
             </h:form>
         </section>
     </ui:define>

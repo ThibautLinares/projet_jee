@@ -4,10 +4,10 @@
 }
 header{
     z-index: 20;
-    height: 60px;;
+    height: 75px;
     width: 100%;
     position: fixed;
-    background-color: #BB1A1A;
+    background-color: rgba(67, 94, 105, 0.30);
     left: 0;
     right: 0;
     top: 0;
@@ -56,39 +56,30 @@ a:link:hover, a:visited:hover  {
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------INDEX------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
-.btnCreerCompteTest{
-        border-style: none none solid none;
-        border-bottom: 1px solid #C9C9C9;
-        border-radius:5px;
-        font-size: 1em;
-        font-family: "roboto";
-        background-color: rgba(255,255,255,0.8);   
-        color: #64794E;
-        cursor: pointer;
-        width: 160px;
-        height: 50px;
-        margin-top: 1%;
-        font-size: 15px;
-        margin-top: 10px;
+
+.accordionPanel{
+    font-family: "roboto";
+    margin-top:30px;
+    background: none !important;
+     background-color: rgba(255, 255, 255, 0) !important;
+ 
 }
-.btnCreerCompteTest:hover{
-        width:180px;
-        background-color: rgba(255,255,255,0.2);   
-        color:#F0F0F0;
-        border-style: none none none none;
-        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.2), 0 10px 15px 0 rgba(0, 0, 0, 0.15);
+.accordionPanel>h3{
+     background: none !important;
+    background-color: rgba(58, 81, 91, 0.60)!important;
+    color: white;
 }
-.initialiseAppForm{
-        opacity: 1;
-        position: relative;
-        margin-top: 30%;
-        padding: 5%;
-        width: 20%;
-        background-color: rgba(250,250,250,0.1);
-        box-shadow: 2px 3px 10px rgba(88, 88, 88, 0.78);
-        min-width: 500px;
+.accordionPanel>.ui-widget-content{
+    background: none !important;
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    color: white !important;
+}
+.panelGridVirement{
         text-align: center;
-        border-radius: 8px;
+        width: 100%;
+}
+.formVirement{
+    width: 100%;
 }
 .initialiseAppSection{
     margin: auto;
@@ -97,32 +88,157 @@ a:link:hover, a:visited:hover  {
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------DATA TABLE CompteBancaireList------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
-
+.contextMenuSupprimer>span{
+    color:black !important;
+}
 .ui-datatable .ui-datatable-data {
     font-family: "roboto", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif !important;
     font-size: 18px;
 }
-#formCompteBancaire{
-        width: 90% !important;
+.dataTable{
+    margin-left: 70px;
 }
+.dataTable> div:first-child{
+    height: 50px !important;
+}
+
+tbody,thead{
+    background: none !important;
+}
+thead>tr>.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+        background: none !important;
+        
+    background-color: rgba(255, 255, 255, 0.55)!important;
+
+}
+
+
+tbody>.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{
+    border: 1px rgba(0, 0, 0, 0) solid !important;    
+    color:white !important;
+
+}
+tbody>.ui-widget-content{
+    background: none !important;
+    border: 1px solid rgba(187, 177, 170, 0);        background-color: rgba(255, 255, 255, 0.55)!important;
+}
+tbody>.ui-widget-content:hover{
+    background-color: rgba(255, 255, 255, 0.7)!important;
+}
+#formCompteBancaire\:cTable_paginator_bottom,#formCompteBancaire\:cTable .ui-corner-top,.ui-widget-header {
+        background: none !important;
+        background-color: rgba(255, 255, 255, 0.7)!important;
+
+}
+
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------Virement bancaire------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
-.inputVirement{
-        font-size: 17px;   
-    width: 90%;   
-    background-color: rgba(255,255,255,0.8);   
-    color: #A9A9A9;   
-    font-family:"roboto"; 
-    padding-left: 1%;
-    margin-top: 10px;  
-    border-style: none none solid none; 
-    border-bottom: 1px solid #C9C9C9;
-    border-radius: 5px;
-    height:50px;
-    background-position: 10px center;
+
+
+
+
+.deconnexionForm{
+    text-align: right;
 }
-.btnCrediter,.btnDebiter,.btnTransferer{
+
+/*
+.ui-widget-content{
+            background: none !important;
+
+}
+*/
+.sectionVirement{
+        margin: auto;
+    width:600px;
+}
+
+    
+.tabViewVirement{
+    
+    background: none !important;
+        background-color: rgba(255, 255, 255, 0.10) !important;
+    position: relative;
+    margin-top: 5%;
+    width: 50%;
+    box-shadow: 2px 3px 10px rgba(88, 88, 88, 0.78);
+    min-width: 500px;
+    text-align: center;
+    border-radius: 8px;
+        margin-right: auto;
+    margin-left: auto;
+    
+}
+.tabViewVirement>ul{
+    background:none !important;
+}    
+.tabViewVirement>ul>.tabViewVirement>ul>.ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{
+    background-color: rgba(64, 91, 102, 0.44)!important;
+        border-radius:8px;
+
+}
+.tabViewVirement>ul>.ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{
+    background: none;
+        background-color: rgba(255, 255, 255, 0.31) !important;
+        border-radius:8px;
+
+}
+.tabViewVirement>ul>li.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+        background: none;
+            border-radius:8px;
+
+
+}
+.tabViewVirement>ul>li>a:link, .tabViewVirement>ul>li>a:visited{
+    border-radius:8px;
+    background-color: rgba(94, 122, 123, 0.55)!important ;
+    color: white !important;
+    font-size: 20px !important;
+} 
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------FORM------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+#leftcolumn_box01{
+    margin: auto;
+    width:500px;
+}
+
+#formCompteBancaire{
+        width: 90% !important;
+}
+.loginForm{
+        opacity: 1;
+        position: relative;
+        margin-top: 10%;
+        padding: 5%;
+        margin-top: 40%;        
+        background-color: rgba(250,250,250,0.1);
+        box-shadow: 2px 3px 10px rgba(88, 88, 88, 0.78);
+        min-width: 500px;
+        text-align: center;
+        border-radius: 8px;
+}
+.initialiseAppForm{
+        opacity: 1;
+        position: relative;
+        margin-top: 30%;
+        width: 20%;
+        background-color: rgba(250,250,250,0.1);
+        box-shadow: 2px 3px 10px rgba(88, 88, 88, 0.78);
+        min-width: 500px;
+        text-align: center;
+        border-radius: 8px;
+}
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------BUTTON-----------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.btnConnexion:focus,.btnDeconnexion:focus,.btnCreerCompteTest:focus,.btnCrediter:focus,.btnDebiter:focus,.btnTransferer:focus,.btnCreerOperationTest:focus{
+        outline: none;
+}
+
+.btnConnexion,.btnDeconnexion,.btnCreerCompteTest,.btnCrediter,.btnDebiter,.btnTransferer,.btnCreerOperationTest{
         border-style: none none solid none;
         border-bottom: 1px solid #C9C9C9;
         border-radius:5px;
@@ -131,65 +247,65 @@ a:link:hover, a:visited:hover  {
         background-color: rgba(255,255,255,0.8);   
         color: #64794E;
         cursor: pointer;
-        width: 95px;
         height: 50px;
         margin-top: 1%;
-        font-size: 15px;
         margin-top: 10px;
 }
-.btnCrediter:hover,.btnDebiter:hover,.btnTransferer:hover{
-        width:110px;
+.btnConnexion{
+        width: 35%;
+        font-size: 17px;
+}
+.btnCreerOperationTest{
+    margin-bottom: 10%;
+}
+.btnDeconnexion{
+        width: 95px;
+        font-size: 15px;
+}
+.btnCrediter,.btnDebiter,.btnTransferer{
+        width: 130px;
+        font-size: 15px;
+}
+.btnCreerCompteTest,.btnCreerOperationTest{
+        width: 200px;
+        font-size: 15px;
+        margin-top:10%;
+}
+
+/*bouton hover*/
+.btnConnexion:hover,.btnCreerCompteTest:hover,.btnDeconnexion:hover,.btnCrediter:hover,.btnDebiter:hover,.btnTransferer:hover,.btnCreerOperationTest:hover{
         background-color: rgba(255,255,255,0.2);   
         color:#F0F0F0;
         border-style: none none none none;
         box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.2), 0 10px 15px 0 rgba(0, 0, 0, 0.15);
 }
-
-
-.virementSection{
-        margin: auto;
-        width:900px;
+.btnConnexion:hover{
+    width:40%;
 }
-.virementSection .ui-widget-content{
-            background: none !important;
-
-}
-.tabViewVirement{
-        opacity: 1;
-        position: relative;
-        margin-top: 30%;
-        padding: 5%;
-        width: 100%;
-        background-color: rgba(250,250,250,0.1);
-        box-shadow: 2px 3px 10px rgba(88, 88, 88, 0.78);
-        min-width: 500px;
-        text-align: center;
-        border-radius: 8px;
-    
+.btnCreerCompteTest:hover,.btnCreerOperationTest:hover{
+        width:220px;
 }
 
+.btnDeconnexion:hover{
+        width:110px;
+}
+.btnCrediter:hover,.btnDebiter:hover,.btnTransferer:hover{
+        width:150px;
+}
+/*Transition*/
+.btnConnexion,.btnDeconnexion,.btnCrediter,.btnDebiter,.btnTransferer,.btnCreerCompteTest,.btnCreerOperationTest{
+        -o-transition: all 0.5s linear;
+        -moz-transition: all 0.5s linear;
+        -khtml-transition: all 0.5s linear;
+        -webkit-transition: all 0.5s linear;
+        -ms-transition: all 0.5s linear;
+        transition: all 0.5s linear;
+
+}
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
-/*------------------------------------------------------------------LOGIN Connexion-------------------------------------------------------------*/
+/*-----------------------------------------------------------------------INPUT-----------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
-#leftcolumn_box01{
-    margin: auto;
-    width:600px;
-}
-
-.loginForm{
-        opacity: 1;
-        position: relative;
-        margin-top: 10%;
-        padding: 5%;
-        width: 20%;
-        background-color: rgba(250,250,250,0.1);
-        box-shadow: 2px 3px 10px rgba(88, 88, 88, 0.78);
-        min-width: 500px;
-        text-align: center;
-        border-radius: 8px;
-}
-
-.login,.password{  
+.login,.password,.inputVirement,inputVirementAutoComplete>input{  
     font-size: 17px;   
     width: 90%;   
     background-color: rgba(255,255,255,0.8);   
@@ -204,66 +320,13 @@ a:link:hover, a:visited:hover  {
     background-position: 10px center;
 }
 
-.btnConnexion{
-        border-style: none none solid none;
-        border-bottom: 1px solid #C9C9C9;
-        border-radius:5px;
-        font-size: 1em;
-        font-family: "roboto";
-        background-color: rgba(255,255,255,0.8);   
-        color: #64794E;
-        cursor: pointer;
-        width: 35%;
-        height: 50px;
-        margin-top: 1%;
-        font-size: 17px;
-        margin-top: 10px;
-
-}
-.btnConnexion:hover{
-        width:40%;
+.login:hover,.password:hover,.inputVirement:hover,inputVirementAutoComplete>input:hover{
         background-color: rgba(255,255,255,0.2);   
-        color:#F0F0F0;
-        border-style: none none none none;
-        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.2), 0 10px 15px 0 rgba(0, 0, 0, 0.15);
+        color: #ffffff;
 }
-.deconnexion{
-        border-style: none none solid none;
-        border-bottom: 1px solid #C9C9C9;
-        border-radius:5px;
-        font-size: 1em;
-        font-family: "roboto";
-        background-color: rgba(255,255,255,0.8);   
-        color: #64794E;
-        cursor: pointer;
-        width: 95px;
-        height: 50px;
-        margin-top: 1%;
-        font-size: 15px;
-        margin-top: 10px;
+.inputVirement,inputVirementAutoComplete>input{
+        width: 60% !important;
 }
-.deconnexion:hover{
-        width:110px;
-        background-color: rgba(255,255,255,0.2);   
-        color:#F0F0F0;
-        border-style: none none none none;
-        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.2), 0 10px 15px 0 rgba(0, 0, 0, 0.15);
-}
-
-
-
-
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------BUTTON-----------------------------------------------------------------*/
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
-
-.btnConnexion:focus,.deconnexion:focus{
-        outline: none;
-}
-
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------INPUT-----------------------------------------------------------------*/
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
 input:hover::-webkit-input-placeholder{color: #FFFFFF;}
 /* Firefox < 19 */
 input:hover:-moz-placeholder{color: #FFFFFF;}
@@ -272,24 +335,19 @@ input:hover::-moz-placeholder{color: #FFFFFF;}
 /* Internet Explorer 10 */
 input:hover:-ms-input-placeholder{color: #FFFFFF;}
 
-.login:focus,.password:focus,.btnConnexion:focus,.deconnexion:focus{
+.login:focus,.password:focus,.inputVirement:focus,inputVirementAutoComplete>input:focus{
         outline: none;
 }
-.login:hover,.password:hover,.btnConnexion:hover,.deconnexion:hover{
-        background-color: rgba(255,255,255,0.4);   
-        color: #ffffff;
-}
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------TRANSITION---------------------------------------------------------------*/
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
-.login,.password,.btnConnexion,.deconnexion,.btnCrediter,.btnDebiter,.btnTransferer,.btnCreerCompteTest{
+
+
+.login,.password,.inputVirement,inputVirementAutoComplete>input{
         -o-transition: all 0.5s linear;
         -moz-transition: all 0.5s linear;
         -khtml-transition: all 0.5s linear;
         -webkit-transition: all 0.5s linear;
         -ms-transition: all 0.5s linear;
         transition: all 0.5s linear;
-
 }
+
 
 

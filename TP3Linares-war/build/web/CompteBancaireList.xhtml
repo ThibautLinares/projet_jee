@@ -24,25 +24,25 @@
         <f:view>
             <h:form id="formCompteBancaire">
                 <p:contextMenu for="cTable">
-                    <p:menuitem value="Supprimer" update="cTable" icon="ui-icon-close" actionListener="#{compteBancaireMBean.supprimerUnCompte()}"/>
+                    <p:menuitem styleClass="contextMenuSupprimer" value="Supprimer" update="cTable" icon="ui-icon-close" actionListener="#{compteBancaireMBean.supprimerUnCompte()}"/>
                 </p:contextMenu>
                 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                     <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                     <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                 </p:confirmDialog>
 
-                <h1><h:outputText value="List"/></h1>
                 <p:dataTable id="cTable" value="#{compteBancaireMBean.modele}" var="item" paginator="true" rows="5" lazy="true"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"  
                              rowsPerPageTemplate="5,10,15"
                              resizableColumns="true" liveResize="true"
                              rowKey="#{item.id}"
+                             styleClass="dataTable"
                              rowStyleClass="#{item.solde le 0 ? 'soldeNegatifRow' : null}"
                              selection="#{compteBancaireMBean.selectedCompte}" selectionMode="single"
                              emptyMessage="Aucun compte bancaire trouvé." >
-                    <f:facet name="header">
-                        Liste des comptes bancaires
-                        <p:commandButton id="toggler" type="button" value="Colonne" style="float:right" icon="ui-icon-calculator" />
+                    <f:facet  name="header">
+                        <h:outputText value="Liste des comptes bancaires" styleClass="headerTable"/>
+                        <p:commandButton id="toggler" type="button" style="float:right" icon="ui-icon-calculator" />
                         <p:columnToggler datasource="cTable" trigger="toggler" />
                     </f:facet>
                     <p:column style="width:50px;" sortBy="#{item.id}" filterBy="#{item.id}" filterMatchMode="contains">

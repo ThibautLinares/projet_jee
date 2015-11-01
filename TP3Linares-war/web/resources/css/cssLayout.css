@@ -2,38 +2,22 @@
 
 #left {
     float: left;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(126, 145, 126,0.3);
     padding-left: 5px;
     width: 250px;
     height: 100%;
-    padding-top: 40px;
+    padding-top: 10px;
+    margin-top: 75px;
     position: fixed;
     z-index: 5;
     box-shadow: 2px 0px 4px 0px rgba(0,0,0,0.3);
 }
-#left>ul>li>a{
-    text-align: left;
-    cursor: pointer;
-    font-size: 1.3em;
-}
-#left>ul{
-    padding: 0px;
-}
+
 a:link,a:visited{
-  color: #636363 !important;
+    color: rgb(255, 255, 255) !important;
     font-weight: normal !important;
     text-decoration: none;
     font-family: "roboto"!important;
-}
-#left>ul>li{
-    list-style: none;
-    cursor: pointer;
-    min-width: 150px;
-    height: auto;
-    padding: 15px 0 15px 10%;
-    color: #636363;
-    border-bottom: 1px solid #D0D0D0;
-
 }
 
 #right {
@@ -50,7 +34,6 @@ a:link,a:visited{
 }
 
 .left_content {
-    background-color: rgba(255, 255, 255, 0.40);
     height: 100%;
     padding-top: 100px;
     padding-left: 265px;

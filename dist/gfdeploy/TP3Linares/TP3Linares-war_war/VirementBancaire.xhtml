@@ -6,39 +6,49 @@
                 xmlns:p="http://primefaces.org/ui">
     
     <ui:define name="content">
-        <section class="virementSection">
-            
-            
+        <section styleClass="sectionVirement">
             <p:tabView styleClass="tabViewVirement">
                 <p:tab title="Créditer un compte">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <h:form >
-                            <h:inputText styleClass="inputVirement" id="idCompteCrediter" value="#{compteBancaireMBean.idCompteACrediter}"/>
+                    <h:panelGrid styleClass="panelGridVirement" columns="2" cellpadding="10">
+                        <h:form styleClass="formVirement">
+                            
+                            <p:autoComplete styleClass="inputVirementAutoComplete" id="idCompteCrediter" value="#{compteBancaireMBean.nomCompteACrediter}" completeMethod="#{compteBancaireMBean.completeText}" />
                                 <p:watermark for="idCompteCrediter" value="id du compte à créditer" /><!--Placeholder-->
+                            <h:outputText value="&lt;br/&gt;" escape="false" />
                             <h:inputText styleClass="inputVirement" id="montantCompteCrediter" value="#{compteBancaireMBean.montantACrediter}"/>
+                            <h:outputText value="&lt;br/&gt;" escape="false" />
                             <h:commandButton id="crediter" styleClass="btnCrediter" value="Créditer" action="#{compteBancaireMBean.crediterUnCompte()}"/> 
                         </h:form>
                     </h:panelGrid>
                 </p:tab>
                 <p:tab title="Débiter un compte">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <h:form >
-                            <h:inputText styleClass="inputVirement" id="idCompteDebiter" value="#{compteBancaireMBean.idCompteADebiter}"/>
+                    <h:panelGrid styleClass="panelGridVirement" columns="2" cellpadding="10">
+                        <h:form styleClass="formVirement">
+                            
+                            <p:autoComplete styleClass="inputVirementAutoComplete" id="idCompteDebiter" value="#{compteBancaireMBean.nomCompteADebiter}" completeMethod="#{compteBancaireMBean.completeText}" />
                                 <p:watermark for="idCompteDebiter" value="id du compte à débiter" /><!--Placeholder-->
+                            <h:outputText value="&lt;br/&gt;" escape="false" />
+                            
                             <h:inputText styleClass="inputVirement" id="montantCompteDebiter" value="#{compteBancaireMBean.montantADebiter}"/>
+                            <h:outputText value="&lt;br/&gt;" escape="false" />
                             <h:commandButton id="debiter" styleClass="btnDebiter" value="Débiter" action="#{compteBancaireMBean.debiterUnCompte()}"/> 
                         </h:form>
                     </h:panelGrid>
                 </p:tab>
                 <p:tab title="Transférer vers un compte">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <h:form >
-                            <h:inputText styleClass="inputVirement" id="idCompteDebiterTransferer" value="#{compteBancaireMBean.idCompteADebiter}"/>
-                            <p:watermark for="idCompteDebiterTransferer" value="id du compte à débiter"  /><!--Placeholder-->
-                            <h:inputText styleClass="inputVirement" id="idCompteCrediterTransferer" value="#{compteBancaireMBean.idCompteACrediter}"/>
-                            <p:watermark for="idCompteCrediterTransferer" value="id du compte à créditer" /><!--Placeholder-->
-                            <h:outputLabel value="Montant du transfert" />
+                    <h:panelGrid styleClass="panelGridVirement" columns="2" cellpadding="10">
+                        <h:form styleClass="formVirement">
+                            
+                            <p:autoComplete styleClass="inputVirementAutoComplete" id="idCompteDebiterTransferer" value="#{compteBancaireMBean.nomCompteADebiter}" completeMethod="#{compteBancaireMBean.completeText}" />
+                                <p:watermark for="idCompteDebiterTransferer" value="id du compte à débiter"  /><!--Placeholder-->
+                            <h:outputText value="&lt;br/&gt;" escape="false" />
+
+                            <p:autoComplete styleClass="inputVirementAutoComplete" id="idCompteCrediterTransferer" value="#{compteBancaireMBean.nomCompteACrediter}" completeMethod="#{compteBancaireMBean.completeText}" />
+                                <p:watermark for="idCompteCrediterTransferer" value="id du compte à créditer" /><!--Placeholder-->
+                            <h:outputText value="&lt;br/&gt;" escape="false" />
+                            
                             <h:inputText styleClass="inputVirement" id="montantTransferer" value="#{compteBancaireMBean.montantADebiter}"/>
+                            <h:outputText value="&lt;br/&gt;" escape="false" />
                             <h:commandButton  id="transferer" styleClass="btnTransferer" value="Transférer"  action="#{compteBancaireMBean.transferer()}"/>
                             <h3>#{compteBancaireMBean.message}</h3>
                         </h:form>

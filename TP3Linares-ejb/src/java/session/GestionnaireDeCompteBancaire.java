@@ -98,6 +98,25 @@ public class GestionnaireDeCompteBancaire {
         q.setMaxResults(nb);
         return q.getResultList();
     }
+    /**
+     * 
+     * @param commencePar exemple: recherche les comptes commencant par : "compte1"
+     * @param nombreMax exemple : selectionne les x premiers comptes commencant par :"compte1"
+     * @return 
+     */
+    public List<String> getComptesAutoComplete(String commencePar, int nombreMax)
+    {        //Query query = em.createQuery("SELECT c FROM CompteBancaire c WHERE c.id = :id").setParameter("id", id);
+        Query query = em.createQuery("Select c.nom FROM CompteBancaire c WHERE c.nom LIKE '"+commencePar+"%'");
+        query.setMaxResults(nombreMax);
+        return query.getResultList();
+
+    }
+    public Long getIdCompteByName(String nameCompte){
+        String nomCompte = nameCompte.trim();
+        Query query = em.createQuery("SELECT c.id FROM CompteBancaire c WHERE c.nom='"+nomCompte+"'");
+        Long id = (long)query.getSingleResult();
+        return id;
+    }
     public List<CompteBancaire> getComptesTries(int start, int nb, String order, String tri) {
         
         String orderValue = "";

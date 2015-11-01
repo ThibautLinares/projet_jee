@@ -21,9 +21,9 @@
         <h:panelGroup layout="block" rendered="#{loginMBean.connected}">
             <header id="header" class="header_content" >            
                 <ui:insert name="contentHeader">
-                    <h:form id="deconnexionForm" rendered="#{loginMBean.connected}"> 
+                    <h:form id="deconnexionForm" styleClass="deconnexionForm" rendered="#{loginMBean.connected}"> 
                         <h:outputText value="#{loginMBean.message}" />
-                        <h:commandButton styleClass="deconnexion" value="Deconnexion" action="#{loginMBean.deconnexion}" /> 
+                        <h:commandButton styleClass="btnDeconnexion" value="Deconnexion" action="#{loginMBean.deconnexion}" /> 
                     </h:form>                
                 </ui:insert>
             </header>
@@ -44,12 +44,25 @@
 
 
         <h:panelGroup layout="block" rendered="#{loginMBean.connected}">
+            
             <div id="left">
-                <ul>  
-                    <li><h:link outcome="index.xhtml" value="Accueil"/></li>    
-                    <li><h:link outcome="CompteBancaireList.xhtml" value="Liste des comptes"/></li> 
-                    <li><h:link outcome="VirementBancaire.xhtml" value="Virement"/></li> 
-                </ul> 
+                <p:accordionPanel styleClass="accordionPanel">
+                        <p:tab  title="Accueil">
+                            <h:panelGrid styleClass="accordionTab" columns="2" cellpadding="10">
+                                <h:link outcome="index.xhtml" value="Accueil"/>
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Liste des comptes">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:link outcome="CompteBancaireList.xhtml" value="Liste des comptes"/>
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Virement">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:link outcome="VirementBancaire.xhtml" value="Virement"/>
+                            </h:panelGrid>
+                        </p:tab>
+                </p:accordionPanel>
             </div>
         </h:panelGroup>                   
 
