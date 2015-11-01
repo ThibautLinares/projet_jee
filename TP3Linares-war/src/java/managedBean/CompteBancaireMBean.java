@@ -6,13 +6,15 @@
 package managedBean;
 
 import entity.CompteBancaire;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.Iterator;
+>>>>>>> bdd67821369fc17d9737ddb0bb7512a7374b0b28
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Set;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -28,7 +30,7 @@ import session.GestionnaireDeCompteBancaire;
  */
 @Named(value = "compteBancaireMBean")
 @ViewScoped
-public class CompteBancaireMBean implements Serializable  {
+public class CompteBancaireMBean implements Serializable {
     @EJB
     private GestionnaireDeCompteBancaire gestionnaireDeCompteBancaire;
     
@@ -55,21 +57,19 @@ public class CompteBancaireMBean implements Serializable  {
     public String getMessage() {
         return message;
     }
-    
-    public CompteBancaire getSelectedCompte() {
+        public CompteBancaire getSelectedCompte() {
+        System.out.println("Dans getSelectedCompte");
         return selectedCompte;
     }
  
     public void setSelectedCompte(CompteBancaire selectedCompte) {
+        System.out.println("Dans setSelectedCompte");
         this.selectedCompte = selectedCompte;
     }
     public void supprimerUnCompte() {
+        System.out.println("Dans supprimerUnCompte");
         this.gestionnaireDeCompteBancaire.supprimerCompte(this.selectedCompte.getId());
         selectedCompte = null;
-    }
-    
-    public void supprimerUnCompte(Long idCompteASupprimer) {
-        gestionnaireDeCompteBancaire.supprimerCompte(idCompteASupprimer);
     }
 
     /**
@@ -167,27 +167,37 @@ public class CompteBancaireMBean implements Serializable  {
                             String nomChamp, SortOrder so, 
                             Map filters) {
  
-                        if (!filters.isEmpty()) {
-                            return gestionnaireDeCompteBancaire.getRequeteFiltre(start, nb, filters);
+                        if (filters != null) {
+                            String filterValue = "";
+                            String filterKey = "";
+                            Set set = filters.entrySet();
+                            Iterator i = set.iterator();
+                            if (i.hasNext()) {
+                                 Map.Entry me = (Map.Entry) i.next();
+                                 filterKey = (String) me.getKey();
+                                 filterValue = (String) me.getValue();
+                             }
+                            System.out.println(filterKey);
+                            System.out.println(filterValue);
                         }
                         if(nomChamp != null) {
                             if(nomChamp.equals("nom")) {
                                 // Il faut trier
                                 System.out.println("Tri: champ= " + 
                                         nomChamp + " ordre: " +so.name());
-                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"nom");
+                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"nom",filters);
                             }
                             else if(nomChamp.equals("id")){
                                 // Il faut trier
                                 System.out.println("Tri: champ= " + 
                                         nomChamp + " ordre: " +so.name());
-                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"id");
+                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"id",filters);
                             }
                             else if(nomChamp.equals("solde")){
                                 // Il faut trier
                                 System.out.println("Tri: champ= " + 
                                         nomChamp + " ordre: " +so.name());
-                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"solde");
+                                return gestionnaireDeCompteBancaire.getComptesTries(start, nb, so.name(),"solde",filters);
                             }
                         } else {
                             // Juste la pagination, pas de tri, de filtre
@@ -224,50 +234,57 @@ public class CompteBancaireMBean implements Serializable  {
         Long id = gestionnaireDeCompteBancaire.getIdCompteByName(this.nomCompteACrediter);
         this.setIdCompteACrediter(id);
         gestionnaireDeCompteBancaire.crediterUnCompte(idCompteACrediter, montantACrediter);
+<<<<<<< HEAD
         redirect();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Compte "+idCompteACrediter+" crédité de "+montantACrediter+"€"));
 
+=======
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Compte "+idCompteACrediter+" crédité de "+montantACrediter+"€"));
+>>>>>>> bdd67821369fc17d9737ddb0bb7512a7374b0b28
     }
     
     public void debiterUnCompte() {
         Long id = gestionnaireDeCompteBancaire.getIdCompteByName(this.nomCompteADebiter);
         this.setIdCompteADebiter(id);
         gestionnaireDeCompteBancaire.debiterUnCompte(idCompteADebiter, montantADebiter);
+<<<<<<< HEAD
         redirect();
+=======
+>>>>>>> bdd67821369fc17d9737ddb0bb7512a7374b0b28
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Compte "+idCompteADebiter+" débité de "+montantADebiter+"€"));
     }
     
     public void transferer() {
+<<<<<<< HEAD
             Long idCompteCrediter = gestionnaireDeCompteBancaire.getIdCompteByName(this.nomCompteACrediter);
             System.out.println("nomCompteACrediter =" +nomCompteACrediter+" idCompteCrediter = "+idCompteCrediter);
             this.setIdCompteACrediter(idCompteCrediter);
             Long idCompteDebiter = gestionnaireDeCompteBancaire.getIdCompteByName(this.nomCompteADebiter);
             System.out.println("nomCompteADebiter =" +nomCompteADebiter+" idCompteDebiter = "+idCompteDebiter);
             this.setIdCompteADebiter(idCompteDebiter);
+=======
+        try {
+>>>>>>> bdd67821369fc17d9737ddb0bb7512a7374b0b28
             gestionnaireDeCompteBancaire.transferer(idCompteADebiter, idCompteACrediter, montantADebiter);
             redirect();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", montantADebiter+"€ transféré du compte "+idCompteADebiter+" au compte "+idCompteACrediter));
  
     }
     
+<<<<<<< HEAD
     public List<String> completeText(String query) {
         List<String> results = new ArrayList<String>();
         System.out.println("completeText query = "+query);
         results = this.gestionnaireDeCompteBancaire.getComptesAutoComplete(query, 10);
         return results;
+=======
+    public void supprimerUnCompte(Long idCompteASupprimer) {
+        gestionnaireDeCompteBancaire.supprimerCompte(idCompteASupprimer);
+>>>>>>> bdd67821369fc17d9737ddb0bb7512a7374b0b28
     }
     
     public String showDetails(int idCompteBancaire) {
         return "DetailOperation?idCompteBancaire="+idCompteBancaire;
-    }
-    
-    
-    private void redirect(){
-        try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("VirementBancaire.xhtml");
-        } catch (IOException ex) {
-            Logger.getLogger(CompteBancaireMBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
 }

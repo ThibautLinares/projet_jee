@@ -11,17 +11,44 @@
     </ui:define>
 
     <ui:define name="content">
+            
+            <h:form>
+            <h:commandButton id="compte_test" value="Créer compte de test" action="#{compteBancaireMBean.creerCompteTest()}"/> 
+            </h:form>
+            
+            <h:form>
+            <h:outputLabel value="Id du compte à créditer" />
+            <h:inputText value="#{compteBancaireMBean.idCompteACrediter}"/>
+            <h:outputLabel value="Montant du compte à créditer" />
+            <h:inputText value="#{compteBancaireMBean.montantACrediter}"/>
+            <h:commandButton id="crediter" value="Créditer" action="#{compteBancaireMBean.crediterUnCompte()}"/> 
+            </h:form>
+            
+            <h:form>
+            <h:outputLabel value="Id du compte à débiter" />
+            <h:inputText value="#{compteBancaireMBean.idCompteADebiter}"/>
+            <h:outputLabel value="Montant du compte à débiter" />
+            <h:inputText value="#{compteBancaireMBean.montantADebiter}"/>
+            <h:commandButton id="debiter" value="Débiter" action="#{compteBancaireMBean.debiterUnCompte()}"/> 
+            </h:form>
+            
+            <h:form>
+            <h:outputLabel value="Id du compte à débiter" />
+            <h:inputText value="#{compteBancaireMBean.idCompteADebiter}"/>
+            <h:outputLabel value="Id du compte à créditer" />
+            <h:inputText value="#{compteBancaireMBean.idCompteACrediter}"/>
+            <h:outputLabel value="Montant du transfert" />
+            <h:inputText value="#{compteBancaireMBean.montantADebiter}"/>
+            <h:commandButton id="transferer" value="Transférer" action="#{compteBancaireMBean.transferer()}"/>
+            <h3>#{compteBancaireMBean.message}</h3>
+            </h:form>
+        
+            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 
-
-
-        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-
-        <p:separator />
-
-
-
-
+            <p:separator />
+            
         <f:view>
+<<<<<<< HEAD
             <h:form id="formCompteBancaire">
                 <p:contextMenu for="cTable">
                     <p:menuitem styleClass="contextMenuSupprimer" value="Supprimer" update="cTable" icon="ui-icon-close" actionListener="#{compteBancaireMBean.supprimerUnCompte()}"/>
@@ -46,18 +73,27 @@
                         <p:columnToggler datasource="cTable" trigger="toggler" />
                     </f:facet>
                     <p:column style="width:50px;" sortBy="#{item.id}" filterBy="#{item.id}" filterMatchMode="contains">
+=======
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <p:dataTable id="cTable" value="#{compteBancaireMBean.modele}" var="item" paginator="true" rows="5" lazy="true"
+                                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"  
+                                             rowsPerPageTemplate="5,10,15"
+                                             emptyMessage="Aucun compte bancaire trouvé." >
+                    <p:column sortBy="#{item.id}" filterBy="#{item.id}" filterMatchMode="contains">
+>>>>>>> bdd67821369fc17d9737ddb0bb7512a7374b0b28
                         <f:facet name="header">
                             <h:outputText value="Id"/>
                         </f:facet>
                         <h:outputText value="#{item.id}"/>
                     </p:column>
-                    <p:column style="width:100px;" sortBy="#{item.nom}" filterBy="#{item.nom}" filterMatchMode="contains">
+                    <p:column sortBy="#{item.nom}" filterBy="#{item.nom}" filterMatchMode="contains">
                         <f:facet name="header">
                             <h:outputText value="Nom"/>
                         </f:facet>
                         <h:outputText value="#{item.nom}"/>
                     </p:column>
-                    <p:column style="width:150px;" sortBy="#{item.solde}" filterBy="#{item.solde}" filterMatchMode="contains">
+                    <p:column sortBy="#{item.solde}" filterBy="#{item.solde}" filterMatchMode="contains">
                         <f:facet name="header">
                             <h:outputText value="Solde"/>
                         </f:facet>
@@ -65,24 +101,21 @@
                             <f:convertNumber currencySymbol="€" groupingUsed="#{true}" maxFractionDigits="2" type="currency"/>
                         </h:outputText>
                     </p:column>
-                    <p:column style="width:50px;">
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Opérations"/>
                         </f:facet>
                         <h:link outcome="#{compteBancaireMBean.showDetails(item.id)}" value="Détails"/> 
                     </p:column>
-                    <p:column style="width:20px;">
+                    <p:column>
                         <f:facet name="header">
+                            <h:outputText value="Suppression"/>
                         </f:facet>
-                        <p:commandButton value="X" update="cTable" actionListener="#{compteBancaireMBean.supprimerUnCompte(item.id)}">
-                            <p:confirm header="Confirmation" message="Êtes-vous sûr?" icon="ui-icon-alert" />
-                        </p:commandButton>
+                        <h:commandButton id="supprimer" value="Supprimer" action="#{compteBancaireMBean.supprimerUnCompte(item.id)}"/>
                     </p:column>
                 </p:dataTable>
-
             </h:form>
         </f:view>
-        <p:separator />
     </ui:define>
 
 </ui:composition>

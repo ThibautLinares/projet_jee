@@ -3,8 +3,9 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 template="./template_default.xhtml">
-    
+
     <ui:define name="content">
+<<<<<<< HEAD
         <section class="initialiseAppSection">
             <h:form styleClass="initialiseAppForm">
                 <h:commandButton id="compte_test" styleClass="btnCreerCompteTest"  value="Créer des comptes de test" action="#{compteBancaireMBean.creerCompteTest()}"/> 
@@ -12,6 +13,11 @@
                 <h:commandButton id="operation_test" styleClass="btnCreerOperationTest"  value="Créer des opérations de test" action="#{compteBancaireMBean.creerOperationTest()}"/> 
             </h:form>
         </section>
+=======
+        <h:form>
+        <h:commandButton id="compte_test" value="Créer compte de test" action="#{compteBancaireMBean.creerCompteTest()}"/> 
+        </h:form>
+>>>>>>> bdd67821369fc17d9737ddb0bb7512a7374b0b28
     </ui:define>
-    
+
 </ui:composition>

@@ -6,13 +6,12 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-10-30T07:57:28")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-10-28T14:51:11")
 @StaticMetamodel(CompteBancaire.class)
 public class CompteBancaire_ { 
 
     public static volatile CollectionAttribute<CompteBancaire, OperationBancaire> operations;
     public static volatile SingularAttribute<CompteBancaire, Double> solde;
-    public static volatile SingularAttribute<CompteBancaire, String> description;
     public static volatile SingularAttribute<CompteBancaire, Long> id;
     public static volatile SingularAttribute<CompteBancaire, String> nom;
 

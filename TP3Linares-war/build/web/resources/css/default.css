@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @font-face {
    font-family: 'roboto';
     src: url('../font/roboto/Roboto-Light.ttf');
@@ -14,18 +15,18 @@ header{
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,.3);
 }
 
+=======
+>>>>>>> bdd67821369fc17d9737ddb0bb7512a7374b0b28
 body {
-    background-image:url(../resources/background/background_blur.jpg);
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    font-size: 21px;
-    font-family: "roboto",Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-    color: #ffffff;
-    margin:0px;
+    background-color: #ffffff;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;  
+    margin: 10px;
 }
 
 h1 {
-    font-family: "roboto", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
     border-bottom: 1px solid #AFAFAF; 
     font-size:  16px;
     font-weight: bold;
@@ -35,16 +36,16 @@ h1 {
 }
 
 a:link, a:visited {
-  color: #E2E2E2;
+  color: #045491;
   font-weight : bold;
   text-decoration: none;
-  font-family: "roboto", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif !important;
 }
 
 a:link:hover, a:visited:hover  {
-  color: #97C7EA;
+  color: #045491;
   font-weight : bold;
   text-decoration : underline;
+<<<<<<< HEAD
   font-family: "roboto", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif !important;
 }
       
@@ -351,3 +352,6 @@ input:hover:-ms-input-placeholder{color: #FFFFFF;}
 
 
 
+=======
+}
+>>>>>>> bdd67821369fc17d9737ddb0bb7512a7374b0b28

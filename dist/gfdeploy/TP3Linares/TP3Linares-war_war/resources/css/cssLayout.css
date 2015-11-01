@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 #left {
     float: left;
@@ -19,6 +20,29 @@ a:link,a:visited{
     text-decoration: none;
     font-family: "roboto"!important;
 }
+=======
+#top {
+    position: relative;
+    background-color: #036fab;
+    color: white;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+}
+
+#bottom {
+    position: relative;
+    background-color: #c2dfef;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+}
+
+#left {
+    float: left;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+}
+>>>>>>> bdd67821369fc17d9737ddb0bb7512a7374b0b28
 
 #right {
     float: right;
@@ -34,10 +58,16 @@ a:link,a:visited{
 }
 
 .left_content {
+<<<<<<< HEAD
     height: 100%;
     padding-top: 100px;
     padding-left: 265px;
     padding-right: 15px;
+=======
+    background-color: #dddddd;
+    padding: 5px;
+    margin-left: 170px;
+>>>>>>> bdd67821369fc17d9737ddb0bb7512a7374b0b28
 }
 
 .right_content {
@@ -47,7 +77,8 @@ a:link,a:visited{
 }
 
 #top a:link, #top a:visited {
-  color: #636363;
+  color: white;
+  font-weight : bold;
   text-decoration: none;
 }
 
@@ -55,9 +86,6 @@ a:link,a:visited{
   color: black;
   font-weight : bold;
   text-decoration : underline;
-}
-.left_content label{
-    color: rgb(255, 255, 255);
 }
 
 
